@@ -4,7 +4,7 @@ Hey there! 👋 This is my Job Tracker project — a full-stack web app I built 
 
 I built this project with React, Next.js, and modern front-end tools. It's also my first full-stack project where I practiced writing tests for components, which helped me get more confident with React testing.
 
-Features ✨
+Features ✨ :-
 
 Add, view, and manage job applications
 
@@ -18,7 +18,7 @@ Form validation using React Hook Form
 
 Data fetching and state management with React Query
 
-Tech Stack 🛠️
+Tech Stack 🛠️:-
 
 Next.js – server-side rendering & routing
 
@@ -32,7 +32,7 @@ Auth.js / NextAuth – user authentication
 
 Jest & Testing Library – basic component testing
 
-Testing 🧪
+Testing 🧪:-
 
 I wrote basic tests to demonstrate I can:
 
@@ -44,14 +44,7 @@ Check if the navbar displays correct links based on authentication
 
 This helped me practice unit testing and improved my confidence with React component testing.
 
-Future Improvements 🚀
 
-Add notifications for job application updates
-
-More detailed analytics on application status
-
-Better error handling & UI feedback
-
-Screenshot 🖼️
+Screenshot 🖼️:-
 
 (You can add a screenshot of your dashboard or form here — recruiters love visuals!)
