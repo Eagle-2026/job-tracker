@@ -47,4 +47,15 @@ This helped me practice unit testing and improved my confidence with React compo
 
 Screenshot 🖼️:-
 
-(You can add a screenshot of your dashboard or form here — recruiters love visuals!)
+### 💻 Laptop View  
+📁 screens: screenShot1.png → screenShot6.png  
+(Located in /public)
+
+### 📱 Mobile View  
+📁 screens: screenShotPhone9.png, screenShotPhone10.png  
+
+### 📟 Tablet View  
+📁 screens: screenShotTablet7.png, screenShotTablet8.png
+
+
+
