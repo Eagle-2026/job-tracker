@@ -2,7 +2,7 @@ Job Tracker 🚀
 
 Hey there! 👋 This is my Job Tracker project — a full-stack web app I built to help users keep track of job applications, manage their dashboard, and stay organized during the job hunt.
 
-I built this project with React, Next.js, and modern front-end tools. It's also my first project where I practiced writing tests for components, which helped me get more confident with React testing.
+I built this project with React, Next.js, and modern front-end tools. It's also my first full-stack project where I practiced writing tests for components, which helped me get more confident with React testing.
 
 Features ✨
 
