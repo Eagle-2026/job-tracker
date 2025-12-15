@@ -31,11 +31,17 @@ export interface ExtendedJWT extends JWT {
 // NextAuth Options
 // -------------------------
 export const authOptions: NextAuthOptions = {
+  // -------------------------
+  // Auth Providers
+  // -------------------------
   providers: [
+    // Google OAuth
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     }),
+
+    // Credentials (email/password)
     CredentialsProvider({
       name: "Credentials",
       credentials: {
@@ -49,48 +55,69 @@ export const authOptions: NextAuthOptions = {
           where: { email: credentials.email },
         });
 
-        if (!user) return null;
+        if (!user || !user.password) return null;
 
         const isValid = await compare(credentials.password, user.password);
         if (!isValid) return null;
 
-        return user;
+        // Return safe user object
+        return {
+          id: user.id,
+          name: user.name,
+          email: user.email,
+          role: user.role,
+        };
       },
     }),
   ],
 
+  // -------------------------
+  // Session configuration
+  // -------------------------
   session: { strategy: "jwt" },
+
+  // -------------------------
+  // Pages
+  // -------------------------
   pages: { signIn: "/login" },
+
+  // -------------------------
+  // Secret
+  // -------------------------
   secret: process.env.NEXTAUTH_SECRET,
 
+  // -------------------------
+  // Callbacks
+  // -------------------------
   callbacks: {
     // -------------------------
     // Sign In callback
     // -------------------------
-    async signIn({ user }) {
-      if (!user.email) return false;
+ async signIn({ user }) {
+  if (!user.email) return false;
 
-      let dbUser: PrismaUser | null = await prisma.user.findUnique({
-        where: { email: user.email },
-      });
+  // Check if user exists
+  const dbUser = await prisma.user.findUnique({ where: { email: user.email } });
 
-      if (!dbUser) {
-        dbUser = await prisma.user.create({
-          data: {
-            name: user.name ?? "",
-            email: user.email,
-            password: "", // OAuth users have no password
-            role: "user",
-          },
-        });
-      }
+  if (!dbUser) {
+    const newUser = await prisma.user.create({
+      data: {
+        name: user.name ?? "",
+        email: user.email,
+        password: "", // OAuth users have no password
+        role: "user",
+      },
+    });
+    (user as PrismaUser).id = newUser.id;
+    (user as PrismaUser).role = newUser.role;
+  } else {
+    (user as PrismaUser).id = dbUser.id;
+    (user as PrismaUser).role = dbUser.role;
+  }
 
-      // Assign typed id and role to user
-      (user as PrismaUser).id = dbUser.id;
-      (user as PrismaUser).role = dbUser.role;
+  return true;
+},
 
-      return true;
-    },
 
     // -------------------------
     // JWT callback

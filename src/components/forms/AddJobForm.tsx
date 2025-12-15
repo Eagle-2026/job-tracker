@@ -7,20 +7,28 @@ type JobFormData = {
   title: string;
   company: string;
   location?: string;
-  interview?: boolean;
-  offer?: boolean;
+  interview: boolean;
+  offer: boolean;
 };
 
 export default function AddJobForm() {
-  const { register, handleSubmit, reset } = useForm<JobFormData>();
+  const { register, handleSubmit, reset } = useForm<JobFormData>({
+    defaultValues: { interview: false, offer: false }, // default checkboxes
+  });
   const queryClient = useQueryClient();
 
   const mutation = useMutation({
     mutationFn: async (newJob: JobFormData) => {
+      const payload = {
+        ...newJob,
+        interview: !!newJob.interview, // ensure boolean
+        offer: !!newJob.offer,
+      };
+
       const res = await fetch("/api/jobs", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newJob),
+        body: JSON.stringify(payload),
       });
 
       if (!res.ok) {
@@ -90,3 +98,4 @@ export default function AddJobForm() {
     </form>
   );
 }
+

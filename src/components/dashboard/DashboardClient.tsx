@@ -1,11 +1,11 @@
 "use client";
 
 import { useJobs } from "@/components/hooks/useJobs";
-import AddJobForm from "@/components/forms/AddJobForm";
 import LogoutButton from "@/components/forms/LogoutButton";
 import DashboardJobs from "@/app/dashboard/DashboardJobs";
 import Link from "next/link";
 import type { Session } from "next-auth";
+import  AddJobForm  from "../forms/AddJobForm";
 
 export default function DashboardClient({ session }: { session: Session }) {
   const { total, pending, interview, offer } = useJobs();
@@ -70,7 +70,7 @@ export default function DashboardClient({ session }: { session: Session }) {
         <h2 className="text-2xl font-semibold mb-4 text-slate-800">
           Add a New Job
         </h2>
-        <AddJobForm />
+       <AddJobForm/>
       </div>
 
       {/* Job List */}
