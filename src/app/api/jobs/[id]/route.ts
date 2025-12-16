@@ -46,6 +46,7 @@ export async function DELETE(
   req: NextRequest,
   { params }: { params: { id: string } }
 ) {
+ 
   try {
     const id = params.id;
     const job = await prisma.jobApplication.findUnique({ where: { id } });
