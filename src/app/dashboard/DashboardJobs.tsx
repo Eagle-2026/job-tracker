@@ -229,19 +229,27 @@ export default function DashboardJobs() {
 
   // DELETE mutation
   const deleteMutation = useMutation({
-    mutationFn: async (id: string) => {
-      const res = await fetch(`/api/jobs/${id}`, { method: "DELETE" });
-      if (!res.ok) throw new Error("Failed to delete job");
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["jobs"] });
-      toast("Job deleted successfully", {
-        style: { background: "red", color: "white" },
-        duration: 3000,
-        position: "bottom-left",
-      });
-    },
-  });
+  mutationFn: async (id: string) => {
+    const res = await fetch(`/api/jobs/${id}`, {
+      method: "DELETE",
+      credentials: "include", // ✅ important for NextAuth
+    });
+    if (!res.ok) {
+      const data = await res.json();
+      throw new Error(data.message || "Failed to delete job");
+    }
+    return res.json();
+  },
+  onSuccess: () => {
+    queryClient.invalidateQueries({ queryKey: ["jobs"] });
+    toast("Job deleted successfully", {
+      style: { background: "red", color: "white" },
+      duration: 3000,
+      position: "bottom-left",
+    });
+  },
+});
+
 
   // SAVE mutation
   const saveMutation = useMutation({
