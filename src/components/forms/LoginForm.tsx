@@ -83,7 +83,9 @@ const LoginForm = () => {
       <button
         type="submit"
         disabled={loading}
-        className="flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 text-white cursor-pointer rounded-lg w-full p-2 text-lg mt-2"
+        className="
+  flex items-center justify-center gap-2  bg-slate-900 hover:bg-slate-800  text-white cursor-pointer
+  rounded-xl w-full p-3 text-lg mt-3   transition-all duration-200   hover:scale-[1.02]   active:scale-[0.98]"
       >
         <IoMdLogIn className="text-2xl" />
         {loading ? "Logging in..." : "Login"}
