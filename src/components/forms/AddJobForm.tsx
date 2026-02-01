@@ -17,6 +17,10 @@ export default function AddJobForm() {
   });
   const queryClient = useQueryClient();
 
+  const inputClass =
+    "border border-gray-300 rounded-xl p-3 w-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-pink-400 placeholder-gray-400";
+  const checkboxClass = "h-5 w-5 accent-pink-500";
+
   const mutation = useMutation({
     mutationFn: async (newJob: JobFormData) => {
       const payload = {
@@ -54,19 +58,19 @@ export default function AddJobForm() {
       <input
         {...register("title", { required: true })}
         placeholder="Job Title"
-        className="border border-gray-300 rounded-xl p-3 w-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-pink-400 placeholder-gray-400"
+        className={inputClass}
       />
 
       <input
         {...register("company", { required: true })}
         placeholder="Company Name"
-        className="border border-gray-300 rounded-xl p-3 w-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-pink-400 placeholder-gray-400"
+        className={inputClass}
       />
 
       <input
         {...register("location")}
         placeholder="Location (optional)"
-        className="border border-gray-300 rounded-xl p-3 w-full text-gray-800 focus:outline-none focus:ring-2 focus:ring-pink-400 placeholder-gray-400"
+        className={inputClass}
       />
 
       {/* Checkboxes */}
@@ -74,7 +78,7 @@ export default function AddJobForm() {
         <input
           type="checkbox"
           {...register("interview")}
-          className="h-5 w-5 accent-pink-500"
+          className={checkboxClass}
         />
         <span className="text-gray-700">Interview</span>
       </label>
@@ -83,7 +87,7 @@ export default function AddJobForm() {
         <input
           type="checkbox"
           {...register("offer")}
-          className="h-5 w-5 accent-pink-500"
+          className={checkboxClass}
         />
         <span className="text-gray-700">Offer</span>
       </label>
@@ -98,4 +102,3 @@ export default function AddJobForm() {
     </form>
   );
 }
-
