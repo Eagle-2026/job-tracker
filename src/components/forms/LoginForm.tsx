@@ -14,6 +14,9 @@ const LoginForm = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    if (loading) return; // ✅ PREVENT double submit
+
     setErrorMsg(""); // clear previous error
     setLoading(true);
 
@@ -84,8 +87,13 @@ const LoginForm = () => {
         type="submit"
         disabled={loading}
         className="
-  flex items-center justify-center gap-2  bg-slate-900 hover:bg-slate-800  text-white cursor-pointer
-  rounded-xl w-full p-3 text-lg mt-3   transition-all duration-200   hover:scale-[1.02]   active:scale-[0.98]"
+    flex items-center justify-center gap-2
+    bg-slate-900 hover:bg-slate-800
+    text-white
+    rounded-xl w-full p-3 text-lg mt-3
+    transition-all duration-200
+    disabled:opacity-60 disabled:cursor-not-allowed
+    hover:scale-[1.02] active:scale-[0.98]"
       >
         <IoMdLogIn className="text-2xl" />
         {loading ? "Logging in..." : "Login"}
