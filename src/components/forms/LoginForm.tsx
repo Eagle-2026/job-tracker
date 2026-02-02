@@ -14,8 +14,7 @@ const LoginForm = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (loading) return; // ✅ prevent double submit
-    setErrorMsg("");
+    setErrorMsg(""); // clear previous error
     setLoading(true);
 
     const email = e.currentTarget.email.value;
