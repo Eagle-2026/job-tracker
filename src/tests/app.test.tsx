@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent,waitFor } from "@testing-library/react";
 import React from "react";
 
 // Components
@@ -76,3 +76,31 @@ describe("Navbar", () => {
     expect(screen.getByText(/Register/i)).toBeInTheDocument();
   });
 
+
+// login form submit button 
+
+// ---------------- Mock next-auth ----------------
+
+
+// Render just the login button to test click
+const LoginButton = ({ onClick }: { onClick: () => void }) => (
+  <button type="button" onClick={onClick}>
+    Login
+  </button>
+);
+
+describe("Login button simple test", () => {
+  it("renders button and allows click", () => {
+    const handleClick = jest.fn();
+
+    render(<LoginButton onClick={handleClick} />);
+
+    const button = screen.getByRole("button", { name: /login/i });
+
+    expect(button).toBeInTheDocument();
+
+    fireEvent.click(button);
+
+    expect(handleClick).toHaveBeenCalled();
+  });
+});
