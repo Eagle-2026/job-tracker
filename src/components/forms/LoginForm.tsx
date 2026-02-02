@@ -14,13 +14,13 @@ const LoginForm = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setErrorMsg(""); // clear previous error
+    if (loading) return; // ✅ prevent double submit
+    setErrorMsg("");
     setLoading(true);
 
     const email = e.currentTarget.email.value;
     const password = e.currentTarget.password.value;
 
-    // Validate form inputs
     const validation = loginSchema.safeParse({ email, password });
     if (!validation.success) {
       setErrorMsg(validation.error.issues[0].message);
@@ -28,7 +28,6 @@ const LoginForm = () => {
       return;
     }
 
-    // Use NextAuth signIn
     const res = await signIn("credentials", {
       redirect: false,
       email,
@@ -40,7 +39,7 @@ const LoginForm = () => {
     if (res?.ok) {
       router.push("/dashboard");
     } else {
-      setErrorMsg("Invalid email or password"); // 👈 show error inline
+      setErrorMsg("Invalid email or password");
     }
   };
 
@@ -84,8 +83,13 @@ const LoginForm = () => {
         type="submit"
         disabled={loading}
         className="
-  flex items-center justify-center gap-2  bg-slate-900 hover:bg-slate-800  text-white cursor-pointer
-  rounded-xl w-full p-3 text-lg mt-3   transition-all duration-200   hover:scale-[1.02]   active:scale-[0.98]"
+    flex items-center justify-center gap-2
+    bg-slate-900 hover:bg-slate-800
+    text-white
+    rounded-xl w-full p-3 text-lg mt-3
+    transition-all duration-200
+    disabled:opacity-60 disabled:cursor-not-allowed
+    hover:scale-[1.02] active:scale-[0.98]"
       >
         <IoMdLogIn className="text-2xl" />
         {loading ? "Logging in..." : "Login"}
