@@ -21,6 +21,9 @@ const RegisterForm = () => {
     return () => clearTimeout(timer);
   }, [message]);
 
+  // create style for label 
+  const labelClass = "p-1 text-slate-500 font-bold";
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -52,7 +55,7 @@ const RegisterForm = () => {
     <form className="w-full max-w-md mx-auto" onSubmit={handleSubmit}>
       {/* Name */}
       <div className="flex flex-col mb-3">
-        <label htmlFor="name" className="p-1 text-slate-500 font-bold">
+        <label htmlFor="name" className={labelClass}>
           Name
         </label>
         <input
@@ -66,7 +69,7 @@ const RegisterForm = () => {
 
       {/* Email */}
       <div className="flex flex-col mb-3">
-        <label htmlFor="email" className="p-1 text-slate-500 font-bold">
+        <label htmlFor="email" className={labelClass}>
           Email
         </label>
         <input
@@ -80,7 +83,7 @@ const RegisterForm = () => {
 
       {/* Password */}
       <div className="flex flex-col mb-3">
-        <label htmlFor="password" className="p-1 text-slate-500 font-bold">
+        <label htmlFor="password" className={labelClass}>
           Password
         </label>
         <input
