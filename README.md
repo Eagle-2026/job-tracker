@@ -44,26 +44,28 @@ Check if the navbar displays correct links based on authentication
 
 This helped me practice unit testing and improved my confidence with React component testing.
 
-Screenshot 🖼️:-
+## 🖼️ Screenshots
 
-### 💻 Laptop View
+### 💻 Desktop View
 
-📁 screens: screenShot1.png → screenShot6.png
-(Located in /public)
+![Desktop 1](./public/screenShot1.png)
+![Desktop 2](./public/screenShot2.png)
 
 ### 📱 Mobile View
 
-📁 screens: screenShotPhone9.png, screenShotPhone10.png
+![Mobile 1](./public/screenShotPhone9.png)
+![Mobile 2](./public/screenShotPhone10.png)
 
 ### 📟 Tablet View
 
-📁 screens: screenShotTablet7.png, screenShotTablet8.png
+![Tablet 1](./public/screenShotTablet7.png)
+![Tablet 2](./public/screenShotTablet8.png)
+
+---
 
 ## 🎨 Figma Design
 
 Before building this project, I designed the dashboard in Figma.
-
-### 🖼️ Dashboard UI
 
 ![Figma Dashboard](./public/figma-dashboard.png)
 
