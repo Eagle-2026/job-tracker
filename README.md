@@ -49,16 +49,19 @@ This helped me practice unit testing and improved my confidence with React compo
 ### 💻 Desktop View
 
 ![Desktop 1](./public/screenShot1.png)
+
 ![Desktop 2](./public/screenShot2.png)
 
 ### 📱 Mobile View
 
 ![Mobile 1](./public/screenShotPhone9.png)
+
 ![Mobile 2](./public/screenShotPhone10.png)
 
 ### 📟 Tablet View
 
 ![Tablet 1](./public/screenShotTablet7.png)
+
 ![Tablet 2](./public/screenShotTablet8.png)
 
 ---
